@@ -47,7 +47,8 @@ cd afj-hello-world-Verifier
 
 <li> Review and edit ./src/server.ts file, adjust service endpoint URL and port as required.</li>
 <pre>
-<code>tbd</code>
+<code>const serviceEndpoint = 'faber-pdub.ngrok.io'   //needs to match your ngrok session
+const serviceEndpointPort = 8020               // needs to match your ngrok session</code>
 </pre>
 <li> Build the docker image</li>
 <pre>
