@@ -42,7 +42,7 @@ From the command line of your local machine use a command like:
 <li> Clone the repo</li>
 
 <pre><code>git clone https://github.com/watkinspd/afj-hello-world-verifier.git
-cd afj-hello-world-Verifier
+cd afj-hello-world-verifier
 </code></pre>
 
 <li> Review and edit ./src/server.ts file, adjust service endpoint URL and port as required.</li>
