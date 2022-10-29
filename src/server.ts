@@ -106,9 +106,9 @@ AgentAFJ.agent.events.on(ProofEventTypes.ProofStateChanged, async ({ payload }: 
     console.log("Proof verified: ", payload.proofRecord?.isVerified ? 'Verified':'not Verified')
     if (payload.proofRecord?.isVerified) {
         const proofData = JSON.parse(decode(payload.proofRecord.presentationMessage.presentationAttachments[0].data.base64))
-        console.log("attr_1=", JSON.stringify(proofData.requested_proof.revealed_attrs.attr_1.raw))
-        console.log("attr_2=", JSON.stringify(proofData.requested_proof.revealed_attrs.attr_2.raw))
-        console.log("attr_3=", JSON.stringify(proofData.requested_proof.revealed_attrs.attr_3.raw))
+        console.log("attr_1=", proofData.requested_proof.revealed_attrs.attr_1.raw)
+        console.log("attr_2=", proofData.requested_proof.revealed_attrs.attr_2.raw)
+        console.log("attr_3=", proofData.requested_proof.revealed_attrs.attr_3.raw)
     }
 })
 
