@@ -60,7 +60,7 @@ cd afj-hello-world-Verifier
 <p>You will be able to view the console log and see some of the activities of the demo app.</p>
 <li> Use your browser</li>
     <ul><li> Create a connection invitation</li>
-   <p><br /><a href = "http://localhost:3000/connection/invitation/qrcode" title="http://localhost:3000/connection/invitation/qrcode">http://localhost:3000/connection/invitation/qrcode</a>
+   <p><br /><a href = "http://localhost:3000/" title="http://localhost:3000/">http://localhost:3000/</a>
    <br /></p>
     </li></ul>  
 <li> Scan the qr code with your wallet</li>
