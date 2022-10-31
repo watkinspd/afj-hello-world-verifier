@@ -1,8 +1,8 @@
 {
-  "name": "tsnodetut",
+  "name": "afj-hello-world-verifier",
   "license": "MIT",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "build": "tsc --project ./",
     "start:dev": "nodemon src/server.ts",
