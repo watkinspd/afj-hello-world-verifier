@@ -26,9 +26,14 @@ The goal being to give beginners confidence that the core features for the hyper
     <li><a href = "https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet&gl=US" title="https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet&gl=US">https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet&gl=US</a></li>
    </ul>
   <li> Get an unverified person credential from the credential issuer</li>
-   <ul><li>
+   <ul>
+   <li>
    <a href = "https://openvp-candy-dev.vonx.io/" title="https://openvp-candy-dev.vonx.io/">https://openvp-candy-dev.vonx.io/</a>
-   </li></ul>    
+   </li>
+    <li>
+   <a href = "https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691" title="https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691">https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691</a>
+   </li>
+   </ul>    
 </ul>
 
 ### Steps
