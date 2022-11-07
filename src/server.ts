@@ -18,7 +18,7 @@ import { HttpInboundTransport, agentDependencies } from '@aries-framework/node'
 var qrc = require ('qrcode')
 const decode = (str: string):string => Buffer.from(str, 'base64').toString('binary')
 
-const serviceEndpoint = 'faber-pdub.ngrok.io'   //needs to match your ngrok session
+const serviceEndpoint = '8020-watkinspd-afjhelloworld-qm3iqojyyz2.ws-us73.gitpod.io'   //needs to match your ngrok session
 const serviceEndpointPort = 8020                // needs to match your ngrok session
 const walletLabel = 'afj-hellow-world-verifier'
 const walletKey = 'notagreatkey00000000000000000000'
