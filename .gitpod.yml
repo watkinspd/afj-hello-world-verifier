@@ -5,10 +5,10 @@
 image:
  file: .gitpod.Dockerfile
 
-#tasks:
-#  - init: yarn install
-#    openMode: tab-after
-#    command: yarn start:dev
+tasks:
+  - init: yarn install
+    openMode: tab-after
+    command: yarn start:dev
 
 ports:
   - name: serviceEndpointPort
