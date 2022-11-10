@@ -1,7 +1,7 @@
 # afj-hello-world-verifier
 A "hello world" style app that implements a very rudimentary verifier using typescript, nodejs, aries-framework-javascript (also typescript).
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/https://github.com/watkinspd/afj-hello-world-verifier)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/watkinspd/afj-hello-world-verifier)
 
 ## Concept
 Demonstrate a minimal, working, verifier app that makes use of aries-framework-javascript.
