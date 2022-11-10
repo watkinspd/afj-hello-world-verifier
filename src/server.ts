@@ -1,4 +1,5 @@
 import express from 'express'
+import process from 'process'
 import {
     ConnectionEventTypes,
     ConnectionStateChangedEvent,
@@ -18,8 +19,16 @@ import { HttpInboundTransport, agentDependencies } from '@aries-framework/node'
 var qrc = require ('qrcode')
 const decode = (str: string):string => Buffer.from(str, 'base64').toString('binary')
 
-const serviceEndpoint = '8020-watkinspd-afjhelloworld-qm3iqojyyz2.ws-us73.gitpod.io'   //needs to match your ngrok session
 const serviceEndpointPort = 8020                // needs to match your ngrok session
+const env = process.env
+var serviceEndpoint: string = env.GITPOD_WORKSPACE_URL
+if (serviceEndpoint) {
+    serviceEndpoint = serviceEndpointPort.toString() + '-' + serviceEndpoint.replace('https://','')
+}
+else {
+    serviceEndpoint = '<blah>.ngrok.io'  //needs to match ngrok session
+}
+
 const walletLabel = 'afj-hellow-world-verifier'
 const walletKey = 'notagreatkey00000000000000000000'
 const listenPort = 3000
