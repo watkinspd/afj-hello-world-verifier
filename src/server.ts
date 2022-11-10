@@ -1,5 +1,7 @@
 import express from 'express'
 import process from 'process'
+import nunjucks from 'nunjucks'
+
 import {
     ConnectionEventTypes,
     ConnectionStateChangedEvent,
@@ -16,6 +18,7 @@ import {
     AutoAcceptProof
 } from '@aries-framework/core'
 import { HttpInboundTransport, agentDependencies } from '@aries-framework/node'
+import { Response } from 'express-serve-static-core'
 var qrc = require ('qrcode')
 const decode = (str: string):string => Buffer.from(str, 'base64').toString('binary')
 
@@ -109,19 +112,12 @@ AgentAFJ.agent.events.on<ConnectionStateChangedEvent>(ConnectionEventTypes.Conne
     }
 })
 
-AgentAFJ.agent.events.on(ProofEventTypes.ProofStateChanged, async ({ payload }: ProofStateChangedEvent) => {
-    console.log("Proof presentation=", JSON.stringify(payload.proofRecord))
-    console.log("Proof state: ", payload.proofRecord?.state)
-    console.log("Proof verified: ", payload.proofRecord?.isVerified ? 'Verified':'not Verified')
-    if (payload.proofRecord?.isVerified) {
-        const proofData = JSON.parse(decode(payload.proofRecord.presentationMessage.presentationAttachments[0].data.base64))
-        console.log("attr_1=", proofData.requested_proof.revealed_attrs.attr_1.raw)
-        console.log("attr_2=", proofData.requested_proof.revealed_attrs.attr_2.raw)
-        console.log("attr_3=", proofData.requested_proof.revealed_attrs.attr_3.raw)
-    }
-})
-
 const app = express()
+
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app
+});
 
 app.get('/', async (req, res) => {
     var connectRecord = await AgentAFJ.agent.oob.createLegacyInvitation()
@@ -139,8 +135,36 @@ app.get('/', async (req, res) => {
         if (err) console.log('qr error')
         inviteQR = url.replace('viewBox=', 'width="600" height="600" viewBox=')
     })
-    res.setHeader('Content-Type', 'text/html')
-    return res.send('<body>'+inviteQR+'</body>')
+
+    res.render('index.html', { 'qr': inviteQR});
+})
+
+let subscriber: Response<any, Record<string, any>, number> = null;
+
+app.get('/subscribe', function(req, res) {    
+    subscriber = res;
+});
+
+AgentAFJ.agent.events.on(ProofEventTypes.ProofStateChanged, async ({ payload }: ProofStateChangedEvent) => {
+    console.log("Proof presentation=", JSON.stringify(payload.proofRecord))
+    console.log("Proof state: ", payload.proofRecord?.state)
+    console.log("Proof verified: ", payload.proofRecord?.isVerified ? 'Verified':'not Verified')
+    if (payload.proofRecord?.isVerified) {
+        const proofData = JSON.parse(decode(payload.proofRecord.presentationMessage.presentationAttachments[0].data.base64))
+        console.log("attr_1=", proofData.requested_proof.revealed_attrs.attr_1.raw)
+        console.log("attr_2=", proofData.requested_proof.revealed_attrs.attr_2.raw)
+        console.log("attr_3=", proofData.requested_proof.revealed_attrs.attr_3.raw)
+    
+        subscriber.setHeader('Content-Type', 'text/plain;charset=utf-8');
+        subscriber.setHeader("Cache-Control", "no-cache, must-revalidate");
+
+        subscriber.send(`Credential was Verified.
+            attr_1: ${proofData.requested_proof.revealed_attrs.attr_1.raw}
+            attr_2: ${proofData.requested_proof.revealed_attrs.attr_2.raw}
+            attr_3=: ${proofData.requested_proof.revealed_attrs.attr_3.raw}`);
+
+        subscriber.end();
+    }
 })
 
 app.listen(listenPort)
