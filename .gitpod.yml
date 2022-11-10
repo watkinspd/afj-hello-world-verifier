@@ -7,7 +7,6 @@ image:
 
 tasks:
   - init: yarn install
-    openMode: tab-after
     command: yarn start:dev
 
 ports:
