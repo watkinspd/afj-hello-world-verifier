@@ -13,13 +13,8 @@ The goal being to give beginners confidence that the core features for the hyper
 
 ## How to use
 
-### Requirements:
+### Pre-requirements
 <ul>
-  <li> Your local machine - Windows, Mac, Linux (tested on Windows 11)</li>
-   <ul>
-    <li> docker (tested using Docker Desktop) to run the demo app</li>
-    <li> ngrok (or equivalent) to expose the service endpoint and port of the demo app as it runs in its docker container</li>
-   </ul>
   <li> Install a wallet on your android or iOS device</li>
    <ul>
     <li><a href = "https://apps.apple.com/us/app/bc-wallet/id1587380443" title="https://apps.apple.com/us/app/bc-wallet/id1587380443">https://apps.apple.com/us/app/bc-wallet/id1587380443</a></li>
@@ -34,6 +29,24 @@ The goal being to give beginners confidence that the core features for the hyper
    <a href = "https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691" title="https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691">https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691</a>
    </li>
    </ul>    
+</ul>
+
+## Gitpod support
+
+The code has been tested to run using the gitpod.io service. You need only have a browser and can avoid installing development tools, ngrok, docker etc. on your local machine.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/watkinspd/afj-hello-world-verifier)
+
+Once running in gitpod view the *ports* and open the url for port 3000 using your browser in order to get a QR code for invitation and proof request. View the results using the *terminal* section of the gitpod workspace.
+
+## Running on your local machine
+### Requirements:
+<ul>
+  <li> Your local machine - Windows, Mac, Linux (tested on Windows 11)</li>
+   <ul>
+    <li> docker (tested using Docker Desktop) to run the demo app</li>
+    <li> ngrok (or equivalent) to expose the service endpoint and port of the demo app as it runs in its docker container</li>
+   </ul>
 </ul>
 
 ### Steps
@@ -78,18 +91,12 @@ const serviceEndpointPort = 8020               // needs to match your ngrok sess
 <li> Feel good! Start your imagination.</li>
 </ol>
 
-## Limitations of this demo app
-
-The aim of this exercise was to show a bare bones stripped down demo app for a rudimentary verifier. This is only suitable as a learning tool for developers. This limited demo app is missing obvious features for UI, security, multiuser capability, persistence and so on. Other projects can provide examples of more robust production grade apps.
-
-## Gitpod support
-
-The code has also been tested to run using the gitpod.io service. You need only have a browser and can avoid installing development tools, ngrok, docker etc. on your local machine.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/watkinspd/afj-hello-world-verifier)
-
 ## Visual Code devcontainer support
 
 Open the folder using visual code and it detects the devcontainer.json configration and asks if you want to open the demo app in devcontainers.
 This has been tested on Windows 11 with docker desktop.
 TDB - fuller description
+
+## Limitations of this demo app
+
+The aim of this exercise was to show a bare bones stripped down demo app for a rudimentary verifier. This is only suitable as a learning tool for developers. This limited demo app is missing obvious features for UI, security, multiuser capability, persistence and so on. Other projects can provide examples of more robust production grade apps.

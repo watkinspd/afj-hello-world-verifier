@@ -26,7 +26,7 @@ if (serviceEndpoint) {
     serviceEndpoint = serviceEndpointPort.toString() + '-' + serviceEndpoint.replace('https://','')
 }
 else {
-    serviceEndpoint = '<blah>.ngrok.io'  //needs to match ngrok session
+    serviceEndpoint = 'faber-pdub.ngrok.io'  //needs to match ngrok session
 }
 
 const walletLabel = 'afj-hellow-world-verifier'
