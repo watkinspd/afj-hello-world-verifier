@@ -2,7 +2,11 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: yarn install
+  - init: |
+    (
+      yarn install
+      yarn build
+    )
     command: yarn start:prod
 
 ports:
