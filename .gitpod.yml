@@ -15,7 +15,7 @@ ports:
     description: This port is exposed to the public so the app can interact with wallets and such
     port: 8020
     onOpen: notify
-    visibility: public
+    visibility: ignore
 
   - name: localhostPort
     description: This port is kept local and is the one that serves up the proof request
