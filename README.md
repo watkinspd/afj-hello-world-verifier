@@ -1,8 +1,6 @@
 # afj-hello-world-verifier
 A "hello world" style app that implements a very rudimentary verifier using typescript, nodejs, aries-framework-javascript (also typescript).
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/watkinspd/afj-hello-world-verifier)
-
 ## Concept
 Demonstrate a minimal, working, verifier app that makes use of aries-framework-javascript.
 
@@ -83,6 +81,12 @@ const serviceEndpointPort = 8020               // needs to match your ngrok sess
 ## Limitations of this demo app
 
 The aim of this exercise was to show a bare bones stripped down demo app for a rudimentary verifier. This is only suitable as a learning tool for developers. This limited demo app is missing obvious features for UI, security, multiuser capability, persistence and so on. Other projects can provide examples of more robust production grade apps.
+
+## Gitpod support
+
+The code has also been tested to run using the gitpod.io service. You need only have a browser and can avoid installing development tools, ngrok, docker etc. on your local machine.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/watkinspd/afj-hello-world-verifier)
 
 ## Visual Code devcontainer support
 
