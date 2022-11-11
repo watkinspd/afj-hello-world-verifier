@@ -31,8 +31,15 @@ RUN npm install -g yarn
 
 RUN yarn global add typescript
 
-COPY ./ ./
+COPY ./tsconfig.json ./tsconfig.json
+COPY ./package.json ./package.json
+
 RUN yarn install
+
+COPY ./src ./src
+
 RUN yarn build
-COPY ./ ./
+
+COPY ./views ./views
+
 CMD ["yarn","start:dev"]
