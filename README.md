@@ -37,7 +37,7 @@ The code has been tested to run using the gitpod.io service. You need only have 
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/watkinspd/afj-hello-world-verifier)
 
-This is configured so that you receive a notification when port 3000 is opened. It provides an easy way to click to open the url with your browser. If you miss that step, you can open the url using the *ports* tab in the gitpod visual code workspace and open the url for port 3000 using your browser in order to get a QR code for invitation and proof request. 
+This is configured so that you receive a notification when port 3000 is opened. It provides an easy way to click to open the url with your browser. If you miss that step, you can open the url using the *ports* tab in the gitpod visual code workspace and open the url for port 3000 using your browser in order to get a QR code for invitation and proof request.
 
 View the results using the *terminal* section of the gitpod visual code workspace.
 
@@ -67,8 +67,8 @@ cd afj-hello-world-verifier
 
 <li> Review and edit ./src/server.ts file, adjust service endpoint URL and port as required.</li>
 <pre>
-<code>const serviceEndpoint = 'faber-pdub.ngrok.io'   //needs to match your ngrok session
-const serviceEndpointPort = 8020               // needs to match your ngrok session</code>
+<code>const serviceEndpointPort = 8020               // needs to match your ngrok session
+serviceEndpoint = 'faber-pdub.ngrok.io'   //needs to match your ngrok session</code>
 </pre>
 <li> Build the docker image</li>
 <pre>
