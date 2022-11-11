@@ -1,7 +1,6 @@
 import express from 'express'
 import process from 'process'
 import nunjucks from 'nunjucks'
-
 import {
     ConnectionEventTypes,
     ConnectionStateChangedEvent,
@@ -47,6 +46,13 @@ class AFJAgent {
     endpoint: string
     inPort: number
     connection_id: string
+}
+
+var vAttrs = {
+    verified: false,
+    given_names: '',
+    family_name: '',
+    region: ''
 }
 
 const agentConfig: InitConfig = {
@@ -117,9 +123,13 @@ const app = express()
 nunjucks.configure('views', {
     autoescape: true,
     express: app
-});
+ })
 
 app.get('/', async (req, res) => {
+    vAttrs.verified = false
+    vAttrs.given_names = ''
+    vAttrs.family_name = ''
+    vAttrs.region = ''
     var connectRecord = await AgentAFJ.agent.oob.createLegacyInvitation()
     var invite = {
         invitationUrl: connectRecord.invitation.toUrl({ domain: 'https://'+AgentAFJ.endpoint}),
@@ -136,14 +146,20 @@ app.get('/', async (req, res) => {
         inviteQR = url.replace('viewBox=', 'width="600" height="600" viewBox=')
     })
 
-    res.render('index.html', { 'qr': inviteQR});
+    res.render('index.html', { 'qr': inviteQR})
 })
 
-let subscriber: Response<any, Record<string, any>, number> = null;
+app.get('/polldata', async (req, res) => {
+    res.setHeader('Content-Type', 'text/plain;charset=utf-8')
+    res.setHeader("Cache-Control", "no-cache, must-revalidate")
 
-app.get('/subscribe', function(req, res) {    
-    subscriber = res;
-});
+    if (vAttrs.verified) {
+        res.json(vAttrs)
+    }
+    else {
+        res.status(404).send('Not yet')
+    }
+})
 
 AgentAFJ.agent.events.on(ProofEventTypes.ProofStateChanged, async ({ payload }: ProofStateChangedEvent) => {
     console.log("Proof presentation=", JSON.stringify(payload.proofRecord))
@@ -151,19 +167,13 @@ AgentAFJ.agent.events.on(ProofEventTypes.ProofStateChanged, async ({ payload }: 
     console.log("Proof verified: ", payload.proofRecord?.isVerified ? 'Verified':'not Verified')
     if (payload.proofRecord?.isVerified) {
         const proofData = JSON.parse(decode(payload.proofRecord.presentationMessage.presentationAttachments[0].data.base64))
+        vAttrs.verified = true
+        vAttrs.given_names = proofData.requested_proof.revealed_attrs.attr_1.raw
+        vAttrs.family_name = proofData.requested_proof.revealed_attrs.attr_2.raw
+        vAttrs.region = proofData.requested_proof.revealed_attrs.attr_3.raw
         console.log("attr_1=", proofData.requested_proof.revealed_attrs.attr_1.raw)
         console.log("attr_2=", proofData.requested_proof.revealed_attrs.attr_2.raw)
         console.log("attr_3=", proofData.requested_proof.revealed_attrs.attr_3.raw)
-    
-        subscriber.setHeader('Content-Type', 'text/plain;charset=utf-8');
-        subscriber.setHeader("Cache-Control", "no-cache, must-revalidate");
-
-        subscriber.send(`Credential was Verified.
-            attr_1: ${proofData.requested_proof.revealed_attrs.attr_1.raw}
-            attr_2: ${proofData.requested_proof.revealed_attrs.attr_2.raw}
-            attr_3=: ${proofData.requested_proof.revealed_attrs.attr_3.raw}`);
-
-        subscriber.end();
     }
 })
 
