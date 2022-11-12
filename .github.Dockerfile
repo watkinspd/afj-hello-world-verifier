@@ -41,4 +41,3 @@ COPY ./src ./src
 RUN yarn build
 
 COPY ./views ./views
-CMD ["yarn","start:prod"]
