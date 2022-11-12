@@ -17,7 +17,7 @@ import {
     AutoAcceptProof
 } from '@aries-framework/core'
 import { HttpInboundTransport, agentDependencies } from '@aries-framework/node'
-import { Response } from 'express-serve-static-core'
+
 var qrc = require ('qrcode')
 const decode = (str: string):string => Buffer.from(str, 'base64').toString('binary')
 
@@ -154,7 +154,7 @@ app.get('/polldata', async (req, res) => {
     res.setHeader("Cache-Control", "no-cache, must-revalidate")
 
     if (vAttrs.verified) {
-        res.json(vAttrs)
+        res.send('You provided these verified attributes:' +vAttrs.given_names +' '+ vAttrs.family_name +' '+ vAttrs.region)
     }
     else {
         res.status(404).send('Not yet')

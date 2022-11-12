@@ -4,9 +4,8 @@
         async function pollData() {
             let response = await fetch("/polldata")
             if (response.status === 200) {
-                let vAttrs = await response.json()
-                alert("You provided these verified attributes: " + vAttrs.given_names +' '+ vAttrs.family_name +', '+ vAttrs.region)
-                console.log('Showed message')
+                let msgText = await response.text()
+                alert(msgText)
             } else {
                 await new Promise(resolve => setTimeout(resolve, 2000))
                 pollData()
