@@ -23,12 +23,19 @@ const decode = (str: string):string => Buffer.from(str, 'base64').toString('bina
 
 const serviceEndpointPort = 8020                // needs to match your ngrok session
 const env = process.env
-var serviceEndpoint: string = env.GITPOD_WORKSPACE_URL
+var serviceEndpoint: string = env.GITPOD_WORKSPACE_URL  // gitpod ??
 if (serviceEndpoint) {
     serviceEndpoint = serviceEndpointPort.toString() + '-' + serviceEndpoint.replace('https://','')
 }
 else {
-    serviceEndpoint = 'watkinspd-laughing-space-system-7rrxrq45w9cxg96-8020.preview.app.github.dev'  //needs to match ngrok session
+    serviceEndpoint = env.CODESPACE_NAME  //github codespace ??
+    if (serviceEndpoint) {
+        serviceEndpoint = serviceEndpoint + "-" + serviceEndpointPort.toString() + "." + env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN
+    }
+    else {
+        serviceEndpoint = 'faber-pdub.ngrok.io'  //local machine so needs to match ngrok session
+    }
+    
 }
 
 const walletLabel = 'afj-hellow-world-verifier'
