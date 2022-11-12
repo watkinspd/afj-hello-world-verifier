@@ -28,7 +28,7 @@ if (serviceEndpoint) {
     serviceEndpoint = serviceEndpointPort.toString() + '-' + serviceEndpoint.replace('https://','')
 }
 else {
-    serviceEndpoint = 'faber-pdub.ngrok.io'  //needs to match ngrok session
+    serviceEndpoint = 'watkinspd-laughing-space-system-7rrxrq45w9cxg96-8020.preview.app.github.dev'  //needs to match ngrok session
 }
 
 const walletLabel = 'afj-hellow-world-verifier'

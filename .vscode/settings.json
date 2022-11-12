@@ -1,0 +1,11 @@
+{
+    "remote.portsAttributes": {
+    
+        "443": {
+            "protocol": "https"
+        },
+        "8443": {
+            "protocol": "https"
+        }
+    }
+}

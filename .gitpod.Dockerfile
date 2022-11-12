@@ -31,11 +31,18 @@ RUN npm install -g yarn
 
 RUN yarn global add typescript
 
-COPY ./ ./
-RUN yarn install
-RUN yarn build
-COPY ./ ./
+RUN yarn global add typescript
 
+COPY ./tsconfig.json ./tsconfig.json
+COPY ./package.json ./package.json
+
+RUN yarn install
+
+COPY ./src ./src
+
+RUN yarn build
+
+COPY ./views ./views
 # Create the gitpod user. UID must be 33333.
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
 USER gitpod
