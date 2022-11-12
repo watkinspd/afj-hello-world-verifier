@@ -41,4 +41,5 @@ COPY ./src ./src
 RUN yarn build
 
 COPY ./views ./views
-ENTRYPOINT ["/bin/bash"]
+
+CMD ["/bin/bash", "ls"]
