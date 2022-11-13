@@ -30,15 +30,6 @@ RUN apt install -y --allow-unauthenticated libindy
 RUN npm install -g yarn
 
 RUN yarn global add typescript
-
-COPY ./tsconfig.json ./tsconfig.json
-COPY ./package.json ./package.json
-
 RUN yarn install
 
-COPY ./src ./src
-
-RUN yarn build
-
-COPY ./views ./views
-ENTRYPOINT ["/bin/bash"]
+CMD ["sleep", "infinity"]

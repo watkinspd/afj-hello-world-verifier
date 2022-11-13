@@ -35,7 +35,6 @@ else {
     else {
         serviceEndpoint = 'faber-pdub.ngrok.io'  //local machine so needs to match ngrok session
     }
-    
 }
 
 const walletLabel = 'afj-hellow-world-verifier'

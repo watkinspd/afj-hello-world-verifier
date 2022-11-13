@@ -7,13 +7,13 @@
 	"context": "..",
 
 	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-	"dockerFile": "../.github.Dockerfile",
+	"dockerFile": ".github.Dockerfile",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8020, 3000],
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "yarn install",
+	"postCreateCommand": "yarn build && yarn start:prod",
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
@@ -27,10 +27,12 @@
 	"overrideCommand": false,
 	"portsAttributes": {
 		"3000": {
-			"label": "localhost"
+			"label": "localhost",
+			"onAutoForward": "notify"
 		},
 		"8020": {
-			"label": "serviceEndpoint"
+			"label": "serviceEndpoint",
+			"onAutoForward": "notify"
 		}
 	}
 }
