@@ -32,4 +32,14 @@ RUN npm install -g yarn
 RUN yarn global add typescript
 RUN yarn install
 
+<<<<<<< HEAD:.devcontainer/.github.Dockerfile
 CMD ["sleep", "infinity"]
+=======
+COPY ./src ./src
+
+RUN yarn build
+
+COPY ./views ./views
+
+CMD ["/bin/bash", "ls"]
+>>>>>>> c78f3bc31663eceb25918a4eb8126e101f80b025:.github.Dockerfile
