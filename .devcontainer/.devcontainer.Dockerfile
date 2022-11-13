@@ -30,6 +30,19 @@ RUN apt install -y --allow-unauthenticated libindy
 RUN npm install -g yarn
 
 RUN yarn global add typescript
+
+COPY ./tsconfig.json ./tsconfig.json
+COPY ./package.json ./package.json
+
 RUN yarn install
 
-CMD ["sleep", "infinity"]
+COPY ./src ./src
+
+RUN yarn build
+
+COPY ./views ./views
+
+CMD ["yarn","start:prod"]
+
+EXPOSE 8020
+EXPOSE 3000
