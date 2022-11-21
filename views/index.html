@@ -4,8 +4,7 @@
         async function pollData() {
             let response = await fetch("/polldata")
             if (response.status === 200) {
-                let msgText = await response.text()
-                alert(msgText)
+                window.location.replace("/complete")
             } else {
                 await new Promise(resolve => setTimeout(resolve, 2000))
                 pollData()

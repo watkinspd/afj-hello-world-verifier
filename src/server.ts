@@ -160,12 +160,18 @@ app.get('/polldata', async (req, res) => {
     res.setHeader("Cache-Control", "no-cache, must-revalidate")
 
     if (vAttrs.verified) {
-        res.send('You provided these verified attributes:' +vAttrs.given_names +' '+ vAttrs.family_name +' '+ vAttrs.region)
+        res.status(200).send('Ready')
     }
     else {
         res.status(404).send('Not yet')
     }
 })
+
+app.get('/complete', async (req, res) => {
+    console.log("complete")
+    res.render('complete.html', { 'given_names': vAttrs.given_names, 'family_name': vAttrs.family_name, 'region': vAttrs.region})
+})
+
 
 AgentAFJ.agent.events.on(ProofEventTypes.ProofStateChanged, async ({ payload }: ProofStateChangedEvent) => {
     console.log("Proof presentation=", JSON.stringify(payload.proofRecord))
