@@ -18,6 +18,10 @@
         <p><br>Scan the QR code with your wallet. Wait a few seconds to see the response.<br>
         </p>
         {{ qr|safe }}
+        <p>
+        Direct link if running wallet on this device.<br>
+        <a href = {{ directLink|safe }} title="Direct link to BC mobile wallet.">BC Wallet is on this device.</a>            
+        </p>
         <p><br>For more information refer to:<br>
             <a href = "https://github.com/watkinspd/afj-hello-world-verifier" title="https://github.com/watkinspd/afj-hello-world-verifier">https://github.com/watkinspd/afj-hello-world-verifier</a>
         </p>
