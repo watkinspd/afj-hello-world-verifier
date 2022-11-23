@@ -136,10 +136,10 @@ app.get('/', async (req, res) => {
     vAttrs.given_names = ''
     vAttrs.family_name = ''
     vAttrs.region = ''
-    var connectRecord = await AgentAFJ.agent.oob.createLegacyInvitation()
+    var OutOfBandRecord = await AgentAFJ.agent.oob.createInvitation()
     var invite = {
-        invitationUrl: connectRecord.invitation.toUrl({ domain: 'https://'+AgentAFJ.endpoint}),
-        connectRecord
+        invitationUrl: OutOfBandRecord.outOfBandInvitation.toUrl({ domain: 'https://'+AgentAFJ.endpoint}),
+        OutOfBandRecord
     }
     console.log("invitation", invite.invitationUrl)
     var inviteQR = ''
