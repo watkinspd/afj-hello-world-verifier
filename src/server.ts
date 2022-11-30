@@ -152,7 +152,7 @@ app.get('/', async (req, res) => {
         inviteQR = url.replace('viewBox=', 'width="600" height="600" viewBox=')
     })
 
-    res.render('index.html', { 'qr': inviteQR, 'directLink': 'bcwallet://'+ invite.invitationUrl})
+    res.render('index.html', { 'qr': inviteQR, 'directLink': 'didcomm://'+ invite.invitationUrl})
 })
 
 app.get('/polldata', async (req, res) => {
