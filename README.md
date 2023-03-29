@@ -23,7 +23,7 @@ The goal being to give beginners confidence that the core features for the hyper
   <li> Get an unverified person credential from the credential issuer</li>
    <ul>
    <li>
-   <a href = "https://openvp-candy-dev.vonx.io/" title="https://openvp-candy-dev.vonx.io/">https://openvp-candy-dev.vonx.io/</a>
+   <a href = "https://openvp-candy-issuer-dev.apps.silver.devops.gov.bc.ca/" title="https://openvp-candy-issuer-dev.apps.silver.devops.gov.bc.ca/">https://openvp-candy-issuer-dev.apps.silver.devops.gov.bc.ca/</a>
    </li>
     <li>
    <a href = "https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691" title="https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691">https://candyscan.idlab.org/tx/CANDY_DEV/domain/25691</a>
